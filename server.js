@@ -6,19 +6,24 @@ require("dotenv").config();
 
 const PORT = process.env.PORT;
 
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Static directory to be served
-//app.use(express.static("app/public"));
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
-// Routes
-// =============================================================
-//require("./app/routes/api-routes.js")(app);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-// Starts the server to begin listening
-// =============================================================
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
+
+app.use(routes);
+
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });

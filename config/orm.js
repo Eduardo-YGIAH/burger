@@ -23,10 +23,10 @@ const orm = {
       cb(result);
     });
   },
-  updateOne: function(tableName, objToUpdate, objCriteria, cb) {
+  updateOne: function(tableName, objToUpdate, condition, cb) {
     const queryString = "UPDATE ?? SET ? WHERE ?";
     console.log(queryString);
-    connection.query(queryString, [tableName, objToUpdate, objCriteria], function(err, result) {
+    connection.query(queryString, [tableName, objToUpdate, condition], function(err, result) {
       if (err) throw err;
       cb(result);
     });
