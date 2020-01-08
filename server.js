@@ -8,7 +8,6 @@ require("dotenv").config();
 const PORT = process.env.PORT;
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + "public/assets/js"));
 app.use("/js", express.static(path.join(__dirname, "public/assets/js")));
 app.use("/css", express.static(path.join(__dirname, "public/assets/css")));
 
