@@ -9,15 +9,15 @@ const connection = require("./connection.js");
 const orm = {
   selectAll: function(tableName, cb) {
     const queryString = "SELECT * FROM ??";
-    console.log(queryString);
-    connection.query(queryString, tableName, function(err, result) {
+
+    connection.query(queryString, [tableName], function(err, result) {
       if (err) throw err;
       cb(result);
     });
   },
   insertOne: function(tableName, objCriteria, cb) {
     const queryString = "INSERT INTO ?? SET ?";
-    console.log(queryString);
+
     connection.query(queryString, [tableName, objCriteria], function(err, result) {
       if (err) throw err;
       cb(result);
@@ -25,7 +25,7 @@ const orm = {
   },
   updateOne: function(tableName, objToUpdate, condition, cb) {
     const queryString = "UPDATE ?? SET ? WHERE ?";
-    console.log(queryString);
+
     connection.query(queryString, [tableName, objToUpdate, condition], function(err, result) {
       if (err) throw err;
       cb(result);

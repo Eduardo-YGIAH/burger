@@ -10,20 +10,19 @@ router.get("/", function(req, res) {
     };
     console.log(hbsObject);
     res.render("index", hbsObject);
+    // res.json(data);
   });
 });
 
 router.post("/api/burgers", function(req, res) {
-  burger.insertOne([{ burger_name: req.body.burger_name, devoured: req.body.devoured }], function(result) {
+  burger.insertOne({ burger_name: req.body.burger_name }, function(result) {
     // Send back the ID of the new burger
     res.json({ id: result.insertId });
   });
 });
 
 router.put("/api/burgers/:id", function(req, res) {
-  const condition = "id = " + req.params.id;
-
-  console.log("condition", condition);
+  const condition = { id: req.params.id };
 
   burger.updateOne(
     {

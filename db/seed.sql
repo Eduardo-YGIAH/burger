@@ -1,7 +1,7 @@
 USE `burgers_db`;
 
-INSERT INTO burger(burger_name, devoured)
+INSERT INTO burger(burger_name)
 VALUES
-    ("plain burger", false),
-    ("cheeseburger", false),
-    ("chicken burger", false);
+    ("plain burger"),
+    ("cheeseburger"),
+    ("chicken burger");
