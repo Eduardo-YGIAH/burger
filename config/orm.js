@@ -1,4 +1,4 @@
-var connection = require("./connection.js");
+const connection = require("./connection.js");
 
 // Object Relational Mapper (ORM)
 
@@ -6,29 +6,29 @@ var connection = require("./connection.js");
 // The ? signs are for swapping out other values
 // These help avoid SQL injection
 // https://en.wikipedia.org/wiki/SQL_injection
-var orm = {
-  selectAll: function(tableName) {
-    var queryString = "SELECT * FROM ??";
+const orm = {
+  selectAll: function(tableName, cb) {
+    const queryString = "SELECT * FROM ??";
     console.log(queryString);
     connection.query(queryString, tableName, function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   },
-  insertOne: function(tableName, objCriteria) {
-    var queryString = "INSERT INTO ?? SET ?";
+  insertOne: function(tableName, objCriteria, cb) {
+    const queryString = "INSERT INTO ?? SET ?";
     console.log(queryString);
     connection.query(queryString, [tableName, objCriteria], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   },
-  updateOne: function(tableName, objToUpdate, objCriteria) {
-    var queryString = "UPDATE ?? SET ? WHERE ?";
+  updateOne: function(tableName, objToUpdate, objCriteria, cb) {
+    const queryString = "UPDATE ?? SET ? WHERE ?";
     console.log(queryString);
     connection.query(queryString, [tableName, objToUpdate, objCriteria], function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result);
     });
   }
 };
