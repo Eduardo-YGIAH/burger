@@ -10,6 +10,9 @@ const PORT = process.env.PORT;
 // Serve static content for the app from the "public" directory in the application directory.
 app.use("/js", express.static(path.join(__dirname, "public/assets/js")));
 app.use("/css", express.static(path.join(__dirname, "public/assets/css")));
+app.use("/materialize/css", express.static(path.join(__dirname, "node_modules/materialize-css/dist/css")));
+app.use("/materialize/js", express.static(path.join(__dirname, "node_modules/materialize-css/dist/js")));
+app.use("/img", express.static(path.join(__dirname, "public/assets/img")));
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));

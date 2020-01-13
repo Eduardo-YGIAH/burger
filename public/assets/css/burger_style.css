@@ -1,0 +1,11 @@
+.burger-item {
+  font-size: large;
+  color: #212121;
+  display: flex;
+  justify-content: space-between;
+}
+.burger-lefthovers {
+  font-size: large;
+  color: #bdbdbd;
+  cursor: pointer;
+}
