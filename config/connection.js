@@ -1,13 +1,7 @@
 const mysql = require("mysql");
 require("dotenv").config();
 // Connection Credentials
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: 3306,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: "burger_prod_db"
-});
+const connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 // Connect to the database
 connection.connect(function(err) {
